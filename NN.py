@@ -23,8 +23,8 @@ class NNetwork(object):
 
     def set_param(self, vector):
         sep = self.input_layer_size * self.hidden_layer_size
-        self.w1 = vector[:sep].reshape(self.input_layer_size, self.hidden_layer_size)
-        self.w2 = vector[sep:].reshape(self.hidden_layer_size, self.output_layer_size)
+        self.w1 = vector.ravel()[:sep].reshape(self.input_layer_size, self.hidden_layer_size)
+        self.w2 = vector.ravel()[sep:].reshape(self.hidden_layer_size, self.output_layer_size)
 
     def get_param(self):
         return np.concatenate([self.w1.ravel(), self.w2.ravel()])
